@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'staff/base.html' %}
+
+{% block content %}
+  <div class="card w-50 mx-auto mt-5 text-center">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Login</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+          <div class="alert alert-danger text-center" role="alert">
+            Incorrect Employee ID or Password.
+          </div>
+        {% endif %}
+        <div class="form-group">
+          <label for="{{ form.employee_id.id_for_label }}" class="font-weight-bold">Employee ID</label>
+          {{ form.employee_id }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}" class="font-weight-bold">Password</label>
+          {{ form.password }}
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'staff/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Welcome, {{ user.username }}!</h1><br>
+    {% if user.is_superuser %}
+    <a href="{% url 'admin:index' %}" target="_blank" class="btn btn-primary">Admin</a>
+    {% endif %}
+    <br><br>
+    <form method="post">
+        {% csrf_token %}
+        <a href="{% url 'password_reset' %}" class="btn btn-secondary">Reset Password</a>
+    </form>
+    <br><br>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+</div>
+{% endblock %}
